@@ -14,12 +14,17 @@ public class AnagramaCheck {
         //comprobando si las palabras no son del mismo tamanio
         if (cleanWord1.length() != cleanWord2.length()) return false;
 
-        char[] charArray1 = cleanWord1.toCharArray();
-        char[] charArray2 = cleanWord2.toCharArray();
+        int[] frequency = new int[26];  //
 
-        Arrays.sort(charArray1);
-        Arrays.sort(charArray2);
+        for (int i = 0; i < cleanWord1.length(); i++) {
+            frequency[cleanWord1.charAt(i) - 'a']++;  // se le resta - 'a' para obtener el valor
+            frequency[cleanWord2.charAt(i) - 'a']--;
+        }
 
-        return Arrays.equals(charArray1, charArray2);
+        for (int count : frequency) {
+            if (count != 0) return false; //
+        }
+
+        return true;
     }
 }
