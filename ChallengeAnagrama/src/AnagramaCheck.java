@@ -7,8 +7,9 @@ public class AnagramaCheck {
         //comprobando si no son nulas las palabras
         if (word1 == null || word2 == null) return false;
 
-        String cleanWord1 = word1.replaceAll("\\s", "").toLowerCase();
-        String cleanWord2 = word2.replaceAll("\\s", "").toLowerCase();
+        //conviriendo a minusculas las palabras
+        String cleanWord1 = word1.toLowerCase();
+        String cleanWord2 = word2.toLowerCase();
 
         //comprobando si las palabras no son del mismo tamanio
         if (cleanWord1.length() != cleanWord2.length()) return false;
