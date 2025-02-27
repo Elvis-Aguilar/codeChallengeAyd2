@@ -25,16 +25,16 @@ public class CleanArray {
         return arrayResult;
     }
 
-    public static void concatArrays(Object[] array1, Object[] array2, int index) {
-        for (int i = index; i < array1.length; i++) {
-            if (array1[i] instanceof Object[]) {
-                Object[] temp = (Object[]) array1[i];
-                CleanArray.concatArrays(array1, temp, i);
+    public static int concatArrays(Object[] arrayResult, Object[] subArray, int index) {
+        for (int i = 0; i < subArray.length; i++) {
+            if (subArray[i] instanceof Object[]) {
+               index = CleanArray.concatArrays(arrayResult, (Object[]) subArray[i], index);
             }else{
-                array2[i] = array1[i];
+                arrayResult[index] = subArray[i];
+                index++;
             }
         }
-        //return index;
+        return index;
     }
 
     public static int sizeArray(Object[] array) {
